@@ -1,1 +1,361 @@
-
+{
+  "name": "AI-Powered Marketing Performance Analyst",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c9329765-51e3-4458-a642-ce61e8b9d730",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -464,
+        16
+      ],
+      "notes": "Manual or scheduled trigger for weekly performance analysis"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "id": "af563262-e03e-4103-af0a-536185273714",
+      "name": "Load Campaign Data (Google Sheets)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        64,
+        64
+      ],
+      "notes": "Pull raw campaign performance data (Spend, Impressions, Clicks, Conversions, Revenue)"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "93b6e4a2-64af-4c05-950c-c9181858b055",
+      "name": "AI Performance Analysis",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        304,
+        144
+      ],
+      "notes": "LLM generates insight-driven performance analysis"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "id": "f8040b00-c34a-458c-bf47-03f51a2bbab5",
+      "name": "KPI Benchmarks ",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        64,
+        -144
+      ],
+      "notes": "Pull raw campaign performance data (Spend, Impressions, Clicks, Conversions, Revenue)"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.googleSlides",
+      "typeVersion": 2,
+      "position": [
+        976,
+        -16
+      ],
+      "id": "871e60e0-eb68-4f10-b6c7-c5451ed02404",
+      "name": "Create a presentation"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "id": "d79c1a32-d306-4e09-9931-68a9fcd63643",
+      "name": "Pervious Records ",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        496,
+        -128
+      ],
+      "notes": "Pull raw campaign performance data (Spend, Impressions, Clicks, Conversions, Revenue)"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1296,
+        -16
+      ],
+      "id": "04f735d0-a9a5-4117-99e9-019fa54b8325",
+      "name": "Send a message",
+      "webhookId": "dbe14411-b2b8-4bd6-bed6-92bc6f6111bf"
+    },
+    {
+      "parameters": {
+        "propertyId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "metricsGA4": {
+          "metricValues": [
+            {}
+          ]
+        },
+        "dimensionsGA4": {
+          "dimensionValues": [
+            {}
+          ]
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleAnalytics",
+      "typeVersion": 2,
+      "position": [
+        -208,
+        144
+      ],
+      "id": "4e179e5d-f6f2-45f4-8d4c-eb4c6e2f00ae",
+      "name": "Get a report"
+    },
+    {
+      "parameters": {
+        "additionalOptions": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.googleAds",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        -112
+      ],
+      "id": "4b7c9369-7e31-44de-a868-33ba63ad6d20",
+      "name": "Get many campaigns"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "id": "53cd29e3-f2d6-482e-be73-f54aaa20f9d4",
+      "name": "Suggestions ",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        496,
+        96
+      ],
+      "notes": "Pull raw campaign performance data (Spend, Impressions, Clicks, Conversions, Revenue)"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "90977438-6dc7-408a-a33b-295e991944fc",
+      "name": "Slides Content",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        768,
+        -16
+      ],
+      "notes": "LLM generates insight-driven performance analysis"
+    },
+    {
+      "parameters": {
+        "operation": "classify"
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        1136,
+        -16
+      ],
+      "id": "80bd3057-e94c-4731-aaee-fef2ea816cfc",
+      "name": "Classify text for violations"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get a report",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get many campaigns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Campaign Data (Google Sheets)": {
+      "main": [
+        [
+          {
+            "node": "AI Performance Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KPI Benchmarks ": {
+      "main": [
+        [
+          {
+            "node": "AI Performance Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Performance Analysis": {
+      "main": [
+        [
+          {
+            "node": "Suggestions ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pervious Records ": {
+      "main": [
+        [
+          {
+            "node": "Slides Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a presentation": {
+      "main": [
+        [
+          {
+            "node": "Classify text for violations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a report": {
+      "main": [
+        [
+          {
+            "node": "Load Campaign Data (Google Sheets)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many campaigns": {
+      "main": [
+        [
+          {
+            "node": "Load Campaign Data (Google Sheets)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Suggestions ": {
+      "main": [
+        [
+          {
+            "node": "Slides Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slides Content": {
+      "main": [
+        [
+          {
+            "node": "Create a presentation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Classify text for violations": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "dd8cf5ce-8033-47a6-9520-fa680850c4ae",
+  "meta": {
+    "instanceId": "3a1d871747af404f9d16a7ea8f1adf4b9c7bc066fa153d8992fd00fb56ef84b2"
+  },
+  "id": "feAoLEniYW2-q7mAUrit0",
+  "tags": []
+}
