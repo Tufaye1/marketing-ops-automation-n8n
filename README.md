@@ -25,6 +25,7 @@ This repository contains marketing operations workflows built using n8n to autom
 
 ![Campaign Reporting Workflow](docs/campaign-reporting-workflow.png)
 
+*High-level view of the n8n workflow automating marketing performance reporting and insight delivery.*
 
 
 ## Notes
