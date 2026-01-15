@@ -21,7 +21,6 @@ This repository contains marketing operations workflows built using n8n to autom
 - Normalizes KPIs into a structured format
 - Generates weekly performance summaries
 - Sends insights to stakeholders automatically
-### Workflow Architecture
 
 ![Campaign Reporting Workflow](docs/campaign-reporting-workflow.png)
 
